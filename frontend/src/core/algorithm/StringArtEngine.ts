@@ -1,3 +1,5 @@
+import { getNailCoordinates } from '../../utils/geometry';
+
 export interface StringArtParams {
   width: number;
   height: number;
@@ -47,23 +49,8 @@ export class StringArtEngine {
       }
     }
 
-    this.calculateNails();
+    this.nails = getNailCoordinates(this.nailCount, this.width, this.height);
     this.precalculateLines();
-  }
-
-  // Obliczanie współrzędnych gwoździ na okręgu wpisanym w kwadrat
-  private calculateNails() {
-    const radius = Math.min(this.width, this.height) / 2 - 1;
-    const centerX = this.width / 2;
-    const centerY = this.height / 2;
-
-    for (let i = 0; i < this.nailCount; i++) {
-      const angle = (i * 2 * Math.PI) / this.nailCount;
-      this.nails.push({
-        x: Math.round(centerX + radius * Math.cos(angle)),
-        y: Math.round(centerY + radius * Math.sin(angle)),
-      });
-    }
   }
 
 
