@@ -1,0 +1,9 @@
+# Python / Django
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Baza SQLite (na wypadek testów)
+db.sqlite3
